@@ -73,6 +73,7 @@ const ImagePreview = (props) => {
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
       >
         <h2
@@ -89,16 +90,34 @@ const ImagePreview = (props) => {
         </h2>
 
         {props.enhanced && !props.loading ? (
-          <img
-            src={props.enhanced}
-            alt="Enhanced"
-            style={{
-              width: '100%',
-              maxHeight: '300px',
-              objectFit: 'contain',
-              padding: '0.5rem',
-            }}
-          />
+          <>
+            <img
+              src={props.enhanced}
+              alt="Enhanced"
+              style={{
+                width: '100%',
+                maxHeight: '300px',
+                objectFit: 'contain',
+                padding: '0.5rem',
+              }}
+            />
+            <a
+              href={props.enhanced}
+              download="enhanced-image.png"
+              style={{
+                margin: '0.5rem auto 1rem',
+                backgroundColor: '#1F2937',
+                color: 'white',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.5rem',
+                textDecoration: 'none',
+                fontWeight: '500',
+                textAlign: 'center',
+              }}
+            >
+              Download Image
+            </a>
+          </>
         ) : props.loading ? (
           <Loading />
         ) : (
@@ -115,6 +134,7 @@ const ImagePreview = (props) => {
           </div>
         )}
       </div>
+
     </div>
   );
 };
